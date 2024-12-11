@@ -1,0 +1,14 @@
+{
+	"id": "tips",
+	"version": "0.0.1",
+	"name": "Tips",
+	"description": {
+		"en_us": "Send tips in online gaming.",
+		"zh_cn": "在线上游戏中发送一些提示。"
+	},
+	"dependencies": {
+		"mcdreforged": ">=2.1.0"
+	},
+	"author": "Mooling0602",
+    "link": "https://github.com/Mooling0602/Tips-MCDR"
+}
