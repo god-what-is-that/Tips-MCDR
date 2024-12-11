@@ -1,6 +1,7 @@
 # Tips-MCDR
 `en_us` A simple tipper for MCDReforged.
-`zh_cn` 一个简单的提示发送插件，适用于MCDReforged。
+
+`zh_cn` 一个简单的随机提示定时发送插件，适用于MCDReforged。
 
 ## `en_us` Dependency / `zh_cn` 依赖项
 - Pypi: `pyyaml`
