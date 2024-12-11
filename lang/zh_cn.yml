@@ -1,0 +1,14 @@
+tips:
+  on_load: Tips插件正在加载...
+  on_command:
+    success: 成功启动发送Tips的循环任务！
+    failed: 服务器还没启动完成！
+    already_running: 发送Tips的循环任务已经在运行之中！
+  on_close: 正在关闭发送Tips的循环任务，你需要自行通过!!tips start重新启动。
+  on_reload: 配置刷新完成！
+  on_server_startup: 检测到服务器已经启动完成，自动启动发送Tips的循环任务！
+  command_help:
+    title: "-----Tips插件帮助-----"
+    start: "!!tips start - 开始循环发送Tips"
+    stop: "!!tips stop - 停止循环发送Tips"
+    reload: "!!tips reload - 重载插件并刷新Tips配置"
