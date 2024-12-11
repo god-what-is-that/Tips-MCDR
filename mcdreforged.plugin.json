@@ -3,8 +3,8 @@
 	"version": "0.0.1",
 	"name": "Tips",
 	"description": {
-		"en_us": "Send tips in online gaming.",
-		"zh_cn": "在线上游戏中发送一些提示。"
+		"en_us": "Send random tips to online players.",
+		"zh_cn": "向在线玩家发送随机提示。"
 	},
 	"dependencies": {
 		"mcdreforged": ">=2.1.0"
