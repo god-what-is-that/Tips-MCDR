@@ -10,5 +10,6 @@
 		"mcdreforged": ">=2.1.0"
 	},
 	"author": "Mooling0602",
-    "link": "https://github.com/Mooling0602/Tips-MCDR"
+    "link": "https://github.com/Mooling0602/Tips-MCDR",
+	"resources": ["lang", "resources"]
 }
