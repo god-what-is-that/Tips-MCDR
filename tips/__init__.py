@@ -9,16 +9,19 @@ from .utils import *
 
 
 default_config = {
-    "interval": 30
+    "interval": 30,
+    "prefix": "[Tips]"
 }
 
 interval = 30
+prefix = "[Tips]"
 
 tips = []
 
 Task = False
 
 tLock = threading.Lock()
+
 
 def help() -> RTextList:
     return RTextList(
@@ -30,7 +33,7 @@ def help() -> RTextList:
 
 
 def on_load(server: PluginServerInterface, prev_module):
-    global tips, interval, Task
+    global tips, interval, prefix, Task
     server.logger.info(tr("on_load"))
     config = server.load_config_simple('config.json', default_config)
     server.register_command(
@@ -56,6 +59,7 @@ def on_load(server: PluginServerInterface, prev_module):
     )
     server.register_help_message('!!tips', help())
     interval = config["interval"]
+    prefix = config['prefix']
     if not os.path.exists(f'{configDir}/tips.yml'):
         extract_file('resources/tips.yml', f'{configDir}/tips.yml')
     tips = load_config()
@@ -64,7 +68,7 @@ def on_load(server: PluginServerInterface, prev_module):
         psi.logger.info(tr("on_server_startup"))
         send_tips()
 
-    
+
 def load_config():
     with open(f'{configDir}/tips.yml', 'r', encoding='utf-8') as f:
         data = yaml.safe_load(f)
@@ -74,6 +78,7 @@ def load_config():
         else:
             return None
 
+
 def on_server_startup(server: PluginServerInterface):
     global Task
     Task = True
@@ -82,23 +87,36 @@ def on_server_startup(server: PluginServerInterface):
 
 @new_thread("Tips-Broadcast")
 def send_tips():
+    try:
+        prefixRText = RText.from_json_object(prefix)
+    except ValueError:
+        prefixRText = str(prefix)
+
     if tips is not None:
         with tLock:
             while Task:
                 tip = random.choice(tips)
-                psi.broadcast(f"[Tips] {tip}")
+                try:
+                    tip = RText.from_json_object(tip)
+                except ValueError:
+                    tip = str(tip)
+                psi.broadcast(RText.join(" ", [prefixRText, tip]))
                 time.sleep(interval)
+
 
 def on_server_stop(server: PluginServerInterface, server_return_code: int):
     on_close()
 
+
 def on_unload(server: PluginServerInterface):
     on_close()
+
 
 def on_close():
     global Task
     Task = False
     return tr("on_close")
+
 
 def manually_start():
     global Task
@@ -112,7 +130,8 @@ def manually_start():
     else:
         Task = False
         return tr("on_command.failed")
-    
+
+
 def reload():
     psi.reload_plugin(plgSelf.id)
     return tr("on_reload")
