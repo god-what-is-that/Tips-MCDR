@@ -1,6 +1,6 @@
 {
 	"id": "tips",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"name": "Tips",
 	"description": {
 		"en_us": "Send random tips to online players.",
