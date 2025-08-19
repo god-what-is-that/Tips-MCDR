@@ -9,5 +9,13 @@ tips:
     weight: 10
     command:
       1: "tick freeze"
-      2: "delay 5"
-      3: "tick unfreeze"
+      2: 'execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:jump_boost"}]}] run effect give @s minecraft:jump_boost 1000000 255 true'
+      3: 'execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:slowness"}]}] run effect give @s minecraft:slowness 1000000 255 true'
+      4: 'execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:mining_fatigue"}]}] run effect give @s minecraft:mining_fatigue 1000000 255 true'
+      5: "delay 5"
+      6: 'execute as @a[nbt={active_effects:[{id:"minecraft:jump_boost",amplifier:-1b}]}] run effect clear @s minecraft:jump_boost'
+      7: 'execute as @a[nbt={active_effects:[{id:"minecraft:slowness",amplifier:-1b}]}] run effect clear @s minecraft:slowness'
+      8: 'execute as @a[nbt={active_effects:[{id:"minecraft:mining_fatigue",amplifier:-1b}]}] run effect clear @s minecraft:mining_fatigue'
+      9: "tick unfreeze"
+      10: 'tellraw @a {"text":"§5时间开始流动！"}'
+    prefix: ""
