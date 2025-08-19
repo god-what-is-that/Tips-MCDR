@@ -19,5 +19,5 @@ tips:
       - 'execute as @a[nbt={active_effects:[{id:"minecraft:mining_fatigue",amplifier:-1b}]}] run effect clear @s minecraft:mining_fatigue'
       - 'execute as @a[nbt={active_effects:[{id:"minecraft:weakness",amplifier:-1b}]}] run effect clear @s minecraft:weakness'
       - "tick unfreeze"
-      - 'tellraw @a {"text":"§5时间开始流动！"}'
+      - 'tellraw @a {"text":"[事件] §5时间开始流动！"}'
     prefix: "[事件]"
