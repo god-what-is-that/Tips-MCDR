@@ -1,4 +1,13 @@
 tips:
-  - 不要挖直上或直下！
-  - 使用!!etp back death返回死亡点
-  - 新人在晚上建议挖三填一
+  - text: "不要挖直上或直下！/n小心掉进岩浆！"
+    weight: 20
+  - text: "使用!!etp back death返回死亡点"  
+    weight: 20
+  - text: "新人在晚上建议挖三填一"
+    weight: 50
+  - text: "Star Platinum！The World！"
+    weight: 10
+    command:
+      1: "tick freeze"
+      2: "delay 5"
+      3: "tick unfreeze"
