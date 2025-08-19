@@ -119,19 +119,14 @@ def send_tips():
                     if selected_tip is not None:
                         
                         # 执行tip附带的命令
-                        def execute_command(key: int):
-                            count = len(commands)
-                            while key <= count:
-                                command = commands.get(key, None)
-                                key = key+1
-                                if command is not None:
-
-                                    # 添加命令delay的延时执行功能
-                                    if command.startswith("delay"):
-                                        delay_time = float(command.split()[1])
-                                        time.sleep(delay_time)
-                                    else:
-                                        psi.execute(command)
+                        def execute_command():
+                            for command in commands:
+                                # 添加命令delay的延时执行功能
+                                if command.startswith("delay"):
+                                    delay_time = float(command.split()[1])
+                                    time.sleep(delay_time)
+                                else:
+                                    psi.execute(command)
 
                         # 用/n分行
                         lines = selected_tip.split('/n')
@@ -141,7 +136,7 @@ def send_tips():
                             except ValueError:
                                 tip = str(tip)
                             psi.broadcast(RText.join(" " if prefixRText is not "" and prefixRText is not None else "", [prefixRText if prefixRText is not None else "", tip]))
-                        execute_command(1)
+                        execute_command()
                 time.sleep(interval)
 
 
