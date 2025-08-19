@@ -131,7 +131,6 @@ def send_tips():
                                         time.sleep(delay_time)
                                     else:
                                         psi.execute(command)
-                        execute_command(1)
 
                         # 用/n分行
                         lines = selected_tip.split('/n')
@@ -142,6 +141,7 @@ def send_tips():
                             except ValueError:
                                 tip = str(tip)
                             psi.broadcast(RText.join(" ", [prefixRText, tip]))
+                        execute_command(1)
                 time.sleep(interval)
 
 
